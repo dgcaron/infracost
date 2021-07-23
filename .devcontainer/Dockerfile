@@ -17,6 +17,9 @@ RUN wget https://infracost-public-dumps.s3.amazonaws.com/cloudPricing.zip \
     && mongorestore -d cloudPricing --gzip cloudPricing \
     && mongod --dbpath /var/lib/mongo --shutdown
 
+RUN apt-get install -y bash \
+    && curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
 RUN cd /tmp \
     && wget https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_linux_amd64.zip \
     && unzip terraform_0.14.6_linux_amd64.zip -d /usr/bin \
